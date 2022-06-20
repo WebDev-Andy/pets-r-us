@@ -1,0 +1,27 @@
+{
+  "name": "pets-r-us",
+  "version": "1.0.0",
+  "description": "pets-r-us assignment for WEB-340",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebDev-Andy/pets-r-us.git"
+  },
+  "author": "Andrew Britt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WebDev-Andy/pets-r-us/issues"
+  },
+  "homepage": "https://github.com/WebDev-Andy/pets-r-us#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}
