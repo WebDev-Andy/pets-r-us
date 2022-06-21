@@ -3,6 +3,7 @@
 ; Date: 19 Jun 2022
 ; File name: index.js
 ; Description: index.js file for week-4/ WEB-340
+; Reference: https://www.youtube.com/watch?v=A01KtJTv1oc&t=726s
 ; Reference: https://www.geeksforgeeks.org/how-to-setup-view-engine-in-node-js/
 ; Date referenced: 19 Jun 2022
 */
@@ -23,9 +24,6 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 // Sending Rendered HTML
-
-
-
 app.get('/', (req, res)=> 
 {
     res.sendFile(__dirname + '/views/index.html');
