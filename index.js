@@ -14,17 +14,19 @@ const PORT = process.env.PORT || 3000;
 
 // Static files
 app.use(express.static('public'));
-app.use('/css', express.static(__dirname + 'public/images'));
-app.use('/css', express.static(__dirname + 'public/styles'));
-app.use('/css', express.static(__dirname + 'public/styles/pets.css'));
-app.use('/css', express.static(__dirname + 'public/js'));
+app.use('/images', express.static(__dirname + 'public/images'));
+app.use('/styles', express.static(__dirname + 'public/styles'));
+app.use('/styles/pets.css', express.static(__dirname + 'public/styles/pets.css'));
+app.use('/js', express.static(__dirname + 'public/js'));
+
 
 // View Engine Setup
 app.set('views', './views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+//app.set('.html', require('ejs'.__express));
 
 // Sending Rendered HTML
-app.get('/', (req, res)=> 
+app.get('', (req, res)=> 
 {
     res.sendFile(__dirname + '/views/index.html');
 });
@@ -32,6 +34,6 @@ app.get('/', (req, res)=>
 // Listen on port 3000
 app.listen(PORT, ()=>
 {
-    console.log('Application is listen to you on port ' + PORT);
+    console.log('This application can smell your thoughts on ' + PORT);
 });
 
