@@ -21,19 +21,20 @@ app.use('/js', express.static(__dirname + 'public/js'));
 
 
 // View Engine Setup
+app.engine('.html', require('ejs').__express);
 app.set('views', './views');
 app.set('view engine', 'html');
-//app.set('.html', require('ejs'.__express));
+
 
 // Sending Rendered HTML
 app.get('', (req, res)=> 
 {
-    res.sendFile(__dirname + '/views/index.html');
+    res.render('index');
 });
 
 // Listen on port 3000
 app.listen(PORT, ()=>
 {
-    console.log('This application can smell your thoughts on ' + PORT);
+    console.log('This application can smell your thoughts on port ' + PORT);
 });
 
