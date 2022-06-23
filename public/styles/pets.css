@@ -1,13 +1,36 @@
 
 
 * {
-
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
-    background-color: aquamarine;
+    margin: 0%;
+    padding: 3%;
+    background-color: rgb(215, 164, 93, 0.9);
 }
 
 html {
-    background-color: crimson;
+  
+}
+
+.nav {
+    text-align: center;
+   
+}
+
+.navBtn {
+    background-color: steelblue;
+    color: aliceblue;
+    padding: 1%;
+    text-decoration: none;
+    border: 1px solid black;
+}
+
+.navBtn:hover {
+    background-color: rgb(51, 106, 151);
+    color: aliceblue;
+    padding: 1%;
+    text-decoration: none;
+    border: 1px solid black;
 }

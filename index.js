@@ -7,29 +7,32 @@
 ; Reference: https://www.geeksforgeeks.org/how-to-setup-view-engine-in-node-js/
 ; Date referenced: 19 Jun 2022
 */
+
 // Imports
 const express = require('express');
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Static files
-app.use(express.static('public'));
-app.use('/images', express.static(__dirname + 'public/images'));
-app.use('/styles', express.static(__dirname + 'public/styles'));
-app.use('/styles/pets.css', express.static(__dirname + 'public/styles/pets.css'));
-app.use('/js', express.static(__dirname + 'public/js'));
+app.use(express.static(__dirname + '/public'));
+//app.use(express.static('views'));
+//app.use('/images', express.static(__dirname + 'public/images'));
+//app.use('/styles', express.static(__dirname + 'public/styles'));
+//app.use('/styles/pets.css', express.static(__dirname + 'public/styles/pets.css'));
+//app.use('/js', express.static(__dirname + 'public/js'));
 
 
-// View Engine Setup
-app.engine('.html', require('ejs').__express);
-app.set('views', './views');
-app.set('view engine', 'html');
-
-
-// Sending Rendered HTML
-app.get('', (req, res)=> 
+// Sending Index HTML
+app.get('/', (req, res)=> 
 {
-    res.render('index');
+    res.sendFile(path.join(__dirname + '/views/index.html'));
+});
+
+// Sending Grooming page
+app.get('/grooming', (req, res)=> 
+{
+    res.sendFile(path.join(__dirname + '/views/grooming.html'));
 });
 
 // Listen on port 3000
