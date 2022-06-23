@@ -16,12 +16,21 @@ const PORT = 3000;
 
 // Static files
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static('views'));
 //app.use('/images', express.static(__dirname + 'public/images'));
 //app.use('/styles', express.static(__dirname + 'public/styles'));
 //app.use('/styles/pets.css', express.static(__dirname + 'public/styles/pets.css'));
 //app.use('/js', express.static(__dirname + 'public/js'));
 
+// Adding EJS to the apps view engine
+app.engine('.html', require('ejs').__express);
+
+// Setting views to HTML files directory
+app.set('views', path.join(__dirname, 'views'));
+
+// Setting view engine to HTML
+app.set('view engine', 'html');
 
 // Sending Index HTML
 app.get('/', (req, res)=> 
