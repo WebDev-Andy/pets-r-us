@@ -13,9 +13,10 @@ const PORT = process.env.PORT || 3000;
 
 // Static files
 app.use(express.static("public"));
-app.use('/images', express.static(__dirname + "public/images"));
-app.use('/styles', express.static(__dirname + "public/styles"));
-app.use('/js', express.static(__dirname + "public/js"));
+app.use('/partials', express.static(__dirname + 'views/partials'));
+app.use('/images', express.static(__dirname + 'public/images'));
+app.use('/styles', express.static(__dirname + 'public/styles'));
+app.use('/js', express.static(__dirname + 'public/js'));
 
 // Adding and setting EJS to the apps view engine
 app.engine('.html', require('ejs').__express);
