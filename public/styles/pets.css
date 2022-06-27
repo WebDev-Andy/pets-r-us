@@ -103,3 +103,18 @@ html {
 #marginTxt {
     margin-left: 30%;
 }
+
+#footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-decoration: none;
+    color: red;
+    text-shadow: 1px 1px black; 
+}
+
+#mailLink {
+    color: red;
+    font-style: italic;
+}
