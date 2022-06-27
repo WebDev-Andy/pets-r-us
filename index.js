@@ -12,7 +12,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Static files
 app.use(express.static(__dirname + '/public'));
@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static('views'));
 //app.use('/images', express.static(__dirname + 'public/images'));
 //app.use('/styles', express.static(__dirname + 'public/styles'));
-//app.use('/styles/pets.css', express.static(__dirname + 'public/styles/pets.css'));
 //app.use('/js', express.static(__dirname + 'public/js'));
 
 // Adding EJS to the apps view engine
@@ -44,9 +43,15 @@ app.get('/grooming', (req, res)=>
     res.sendFile(path.join(__dirname + '/views/grooming.html'));
 });
 
+// Hello, is it me you're looking for? 404
+app.get('/', (req, res)=> 
+{
+    res.sendFile(path.join(__dirname + '/views/grooming.html'));
+});
+
 // Listen on port 3000
 app.listen(PORT, ()=>
 {
-    console.log('This application can smell your thoughts on port ' + PORT);
+    console.log('This application is listening on ' + PORT);
 });
 

@@ -1,49 +1,90 @@
+<!--
+; Title: index.html 
+; Author: Andrew (Andy) Britt
+; Date: 19 Jun 2022
+; Description: Landing page for Pets-R-Us 
+; Reference: https://unsplash.com/photos/qy0BHykaq0E?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/pets.css">
 
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="/styles/pets.css">
 
-    <title>Index</title>
+    <!-- Link to Google Fonts (Ubuntu font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+    <title>Welcome to Pets-R-Us</title>
 </head>
 <body>
-    <!--This is the main header and Nav bar-->
     <div>
-        <header><h1>The Main words go here</h1></header>
         <!--This is nav bar actual-->
         <div class="nav">
-            <a class="navBtn" href="/">Stuff</a>
-            <a class="navBtn" href="/grooming">And Stuff</a>
-            <a class="navBtn" href="">And more stuff</a>
-            <a class="navBtn" href="">Lastly some stuff</a>
+            <a class="navBtn" href="/">Pets-R-Us</a>
+            <a class="navBtn" href="/grooming">Grooming</a>
+            <a class="navBtn" href="">Boarding</a>
+            <a class="navBtn" href="">Training</a>
         </div>
+        <header><h1><i>Pets-R-Us<br>your one stop<br>pet care shop</i></h1></header>
         <br>
     </div>
+
     <!--This is the main body container div-->
-    <div>
-            <h2>Stuff works</h2>
-            
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, repellendus? Fugit consequatur excepturi, repellat eveniet perspiciatis autem in. Quae, corporis hic! Sint harum quam magnam numquam et natus molestiae repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eos cum doloremque officia nisi quibusdam, necessitatibus recusandae iste beatae ex culpa explicabo, quae quia earum rem et.  Laboriosam accusantium accusamus saepe nesciunt cum cupiditate eius beatae repudiandae, quo nobis aut consectetur repellendus eveniet cumque amet atque omnis, impedit voluptatibus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia cupiditate nemo fugit odio asperiores cumque, exercitationem ad obcaecati quidem expedita culpa numquam dolore maiores qui nihil eius labore fugiat pariatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque possimus fuga consectetur ullam fugit dolores dolorum accusantium inventore quia illo, fugiat delectus aut? Iure praesentium enim mollitia a, quos labore?</p>
+    <div id="mainBodyText">
+            <h2>Welcome to Pets-R-Us!</h2>
+            <p>Our company started 13 years ago by a group of passionate pet owners who saw a need for quality pet care in our community. We love giving special attention to all our patron's pets as every pet deserves care and attention. Big and small, we'll take care of them all! We are always learning about the latest training methods and testing out the most cutting edge pet products so you can rest assured that our products and services will be the latest and greatest in the pet care world. If you have any specialty needs that we don't currently offer, let us know and we'll do our best to go above and beyond to help you out.</p>
             <br>
             <!--This is the second body section-->
-            <h2>And more words</h2>
-
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo delectus minima nam modi dolorum incidunt ullam necessitatibus magni temporibus asperiores cumque vitae mollitia ea, iure soluta nisi culpa, rem consequatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laboriosam eius obcaecati dolorem eveniet ullam animi repudiandae cum porro fugiat, modi aliquid neque odit fuga voluptatum quas, a minus ea.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ab placeat veritatis vero commodi maiores quod fugiat voluptas, consequuntur, unde est et sint error voluptatem nemo voluptates, consequatur eius iure. Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dignissimos vel eaque soluta perferendis harum similique ut aliquam, mollitia tenetur est minus, nulla corporis earum fugit sed debitis reiciendis. Sint!</p>
-            <br>
-        <div>
-            <footer>
-                <p>This is where the feet go</p>
-            </footer>
+        <div class="left">
+            <h2>Locations</h2>
+            <p>Located in the heart of Northern Indiana's biggest town, South Bend. We have two locations on the north and south end of town to make your drive as convenient as possible. <br>
+            <ul>
+                <li>
+                    1234 Smith St.<br>
+                    South Bend, IN. 46545
+                 </li>
+                 <br>
+                 <li>
+                    4321 Thomson St.<br>
+                    South Bend, IN. 46545
+                 </li>
+            </ul></p>
+        </div>   
+        <div class="right">
+            <h2>Hours</h2>
+            Open from 8 A.M. to 7 P.M.<br>
+            7 days a week.<br><br>
         </div>
-
-
+        <div class="left">
+            <h2>Dog of the week!</h2>
+            Meet Pickles!
+            <ul>
+                <li>4 year old Olde English Bulldogge</li>
+                <li>Born and raised in Niles, Michigan</li>
+                <li>Pickles loves, you guessed it, Pickles!</li>
+            </ul>
+        </div>
+        <div class="right">
+            <h2>Testimonials</h2>
+            <p><i>John Smith:</i> I love pets-r-us, they treat me and my dogs with the best care visit after visit! Their discount for veterans is a plus too, thanks again guys.</p>
+            <p><i>Lisa Taylor:</i> It is so hard to get my dog to leave every time I pick her up. It's usually the other problem for folks. The team at pets-r-us will make your pet care needs so much easier than the rest.</p>
+        </div>
+        <div class="left">
+            <h2>Contact us!</h2>
+            <ul>
+                <li>Call us: 1-234-567-8910</li>
+                <li>Email us: email@email.mail</li>
+                <br>
+            </ul>
+        </div>
     </div>
-    <script>
 
 
-    </script>
 </body>
 </html>
