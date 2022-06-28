@@ -79,6 +79,8 @@ html {
 }
 
 .left {
+    padding-left: 3%;
+    padding-right: 3%;
     margin-right: 52%;
     border: 1px solid black;
     box-shadow: 10px 10px 20px 0px black;
@@ -90,6 +92,8 @@ html {
 }
 
 .right {
+    padding-left: 3%;
+    padding-right: 3%;
     margin-left: 52%;
     border: 1px solid black;
     box-shadow: 10px 10px 20px 0px black;
