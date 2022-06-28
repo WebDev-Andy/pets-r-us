@@ -7,6 +7,8 @@
 ; Reference: https://www.geeksforgeeks.org/how-to-setup-view-engine-in-node-js/
 ; Date referenced: 19 Jun 2022
 */
+
+//requiring Express and declaring the port used
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
