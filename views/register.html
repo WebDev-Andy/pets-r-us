@@ -1,0 +1,55 @@
+<!--
+; Title: grooming.html 
+; Author: Andrew (Andy) Britt
+; Date: 19 Jun 2022
+; Description: Grooming page for Pets-R-Us
+; Reference: https://unsplash.com/photos/qy0BHykaq0E?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+; Reference: https://newbedev.com/javascript-how-to-add-header-and-footer-in-ejs-code-example
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="/styles/pets.css">
+
+    <!-- Link to Google Fonts (Ubuntu font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+    <title>Welcome to Pets-R-Us</title>
+</head>
+<body>
+    <!-- ejs file for header -->
+    <%- include('./partials/header.html')%>
+
+    <div id="headerWords"><h1><i>Pets-R-Us<br>Register</i></h1>
+    </div>
+
+    
+    <!--This is the main login/ register div-->
+    <div id="login">
+        <h2>Register</h2>
+        <!-- Using POST posts to a route named register -->
+        <form action="/register" method="POST">
+            <label for="name">Name: </label>
+            <input name="name" id="name" type="text" required>
+            
+            <label for="email">Email: </label>
+            <input name="email" id="email" type="email" required>
+            
+            <label for="password">Password: </label>
+            <input name="password" id="password" type="password" placeholder="**************" required>
+            <br>
+            <br>
+            <button type="submit" id="loginBtn">Submit</button>
+        </form>
+    </div>
+    <br>
+
+</body>
+</html>

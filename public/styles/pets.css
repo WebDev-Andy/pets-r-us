@@ -122,3 +122,48 @@ html {
     color: red;
     font-style: italic;
 }
+
+#login {
+    padding: 20px;
+    width: 40%;
+    margin-top: 0%;
+    margin-left: 30%;
+    letter-spacing: 1.5px;
+    line-height: 35px;
+    font-size: 28px;
+    color: antiquewhite;
+    text-shadow: 2px 2px black;
+    text-align: left;
+    background-color: rgb(47, 79, 79, 0.9);
+    box-shadow: 10px 10px 20px 0px black;
+}
+
+#login h2 {
+    text-align: center;
+}
+
+#password,
+#email,
+#name {
+    float: right;
+    margin-right: 25%;
+    line-height: 20px;
+}
+
+#loginBtn {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 45px;
+    border: none;
+    border-radius: 0%;
+    background-color: cadetblue;
+    color: antiquewhite;
+    font-size: large;
+}
+
+#loginBtn:hover {
+    box-shadow: 10px 10px 20px 0px black;
+    background-color: rgb(149, 166, 167);
+    color: black;
+}
