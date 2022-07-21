@@ -1,9 +1,11 @@
 <!--
 ; Title: header.html 
+; Author: Professor Krasso
 ; Author: Andrew (Andy) Britt
 ; Date: 25 Jun 2022
 ; Description: Header ejs for Pets-R-Us
 ; Reference: https://www.w3schools.com/Css/css_navbar.asp
+; Reference: https://github.com/buwebdev/web-340/tree/master/week-7
 -->
 
 <!-- header to be sent to ejs -->
@@ -14,7 +16,12 @@
         <a class="navBtn" href="/grooming">Grooming</a>
         <a class="navBtn" href="/boarding">Boarding</a>
         <a class="navBtn" href="/training">Training</a>
+        <% if(currentUser) { %>
+        <a class="navBtn" href="/logout">Log-out</a>
+        <% } %>
+        <% if(!currentUser) { %>
         <a class="navBtn" href="/register">Register</a>
         <a class="navBtn" href="/login">Log-in</a>
+        <% } %>
     </div>
 </header>

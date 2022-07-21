@@ -133,7 +133,7 @@ html {
     font-size: 28px;
     color: antiquewhite;
     text-shadow: 2px 2px black;
-    text-align: left;
+    text-align: right;
     background-color: rgb(47, 79, 79, 0.9);
     box-shadow: 10px 10px 20px 0px black;
 }
@@ -144,10 +144,21 @@ html {
 
 #password,
 #email,
-#name {
-    float: right;
-    margin-right: 25%;
+#username,
+#labels {
+    margin-right: 30%;
     line-height: 20px;
+}
+
+.regBody {
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    margin-left: 35%;
+    width: 30%;
+    border: solid black 2px;
+    color: antiquewhite;
+    background-color: rgb(47, 79, 79, 0.9);
 }
 
 #loginBtn {
@@ -166,4 +177,12 @@ html {
     box-shadow: 10px 10px 20px 0px black;
     background-color: rgb(149, 166, 167);
     color: black;
+}
+
+.userList {
+    margin-left: 30%;
+}
+
+.form-field {
+    margin-left: 30%;
 }

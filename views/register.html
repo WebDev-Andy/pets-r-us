@@ -1,10 +1,11 @@
 <!--
-; Title: grooming.html 
+; Title: register.html 
 ; Author: Andrew (Andy) Britt
 ; Date: 19 Jun 2022
-; Description: Grooming page for Pets-R-Us
+; Description: Registration page for Pets-R-Us
 ; Reference: https://unsplash.com/photos/qy0BHykaq0E?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
 ; Reference: https://newbedev.com/javascript-how-to-add-header-and-footer-in-ejs-code-example
+; Reference: https://github.com/buwebdev/web-340/tree/master/week-7
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -30,26 +31,61 @@
     <div id="headerWords"><h1><i>Pets-R-Us<br>Register</i></h1>
     </div>
 
-    
-    <!--This is the main login/ register div-->
-    <div id="login">
-        <h2>Register</h2>
-        <!-- Using POST posts to a route named register -->
-        <form action="/register" method="POST">
-            <label for="name">Name: </label>
-            <input name="name" id="name" type="text" required>
-            
-            <label for="email">Email: </label>
-            <input name="email" id="email" type="email" required>
-            
-            <label for="password">Password: </label>
-            <input name="password" id="password" type="password" placeholder="**************" required>
+<div class="regBody">
+    <div class="form">
+        <form action="/register" method="post">
+            <input name="_csrf" type="hidden" value="<%= csrfToken %>" />
+            <div class="form-field">
+                <label id="labels" for="username">Username</label><br />
+                <input type="text" class="input" name="username" id="username" required autofocus>
+            </div>
             <br>
+            <div class="form-field">
+                <label id="labels" for="email">Email</label><br />
+                <input type="text" class="input" name="email" id="email" required autofocus>
+            </div>
             <br>
-            <button type="submit" id="loginBtn">Submit</button>
+            <div class="form-field">
+                <label id="labels" for="password">Password</label><br />
+                <input type="password" class="input" name="password" id="password" required>
+            </div>
+            <br>
+
+            <!-- Register Button -->
+            <input type="submit" value="Register" id="loginBtn">
+           
+                <br>
+                <br>
+                <br>
+            <!-- Code examples from buwebdev github for references -->
+            <div class="userList">
+                <h3>User List</h3>
+                <% if(users.length > 0) { %>
+                <table class="table">
+                    <tr>
+                        <th>Username</th>
+                        <th>Joined</th>
+                    </tr>
+                    <tbody>
+                    <% users.forEach(function(user) { %>
+                    <tr>
+                        <td>
+                            <%= user.username %>
+                        </td>
+                        <td>
+                            <%= moment(user.createdAt).format('MM-DD-YYYY') %>
+                        </td>
+                    </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <h3>Users not added to database yet.</h3>
+                <% } %>
+            </div>
         </form>
     </div>
-    <br>
+</div>
 
 </body>
 </html>
