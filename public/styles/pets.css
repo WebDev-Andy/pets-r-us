@@ -150,6 +150,11 @@ html {
     line-height: 20px;
 }
 
+#services {
+    margin-right: 30%;
+    width: 212px;
+}
+
 .regBody {
     display: flex;
     padding: 2rem;

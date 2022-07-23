@@ -7,8 +7,9 @@
 ; Reference: https://www.youtube.com/watch?v=A01KtJTv1oc&t=726s
 ; Reference: https://www.geeksforgeeks.org/how-to-setup-view-engine-in-node-js/
 ; Reference: https://github.com/buwebdev/web-340/tree/master/week-6
-; Reference: https://github.com/buwebdev/web-340/tree/master/week-7
-; Date referenced: 19 Jun 2022
+: Reference: https://github.com/buwebdev/web-340/tree/master/week-7
+; Reference: https://github.com/buwebdev/web-340/tree/master/week-8
+; Date referenced: 21 Jun 2022
 */
 
 // requiring Express and declaring the port used
@@ -24,9 +25,12 @@ const moment = require('moment');
 const csrf = require("csurf");
 const csurfProtection = csrf({ cookie: true });
 const helmet = require('helmet');
+const fs = require('fs');
 
 // Model imports
 const User = require('./models/user.js');
+const Appointment = require('./models/appointment.js');
+const appointment = require('./models/appointment.js');
 
 // Mongo DB connectioon
 const CONN = "mongodb+srv://admin:admin@buwebdev-cluster-1.ypoz2re.mongodb.net/testDB";
@@ -180,6 +184,53 @@ app.get("/logout", function (req, res, next) {
         }
     res.redirect("/login");
     });
+});
+
+// Appointments page routes
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect("/");
+    }
+}
+
+app.get("/appointment", isLoggedIn, (req, res, next) => {
+    let servicesJsonFile = fs.readFileSync('./public/data/services.json');
+    let services = JSON.parse(servicesJsonFile);
+    
+    res.render("appointment.html", {
+        cardTitle: 'Appointment Form',
+        services
+    });
+});
+
+app.post("/appointment", isLoggedIn, (req, res, next) => {
+    const breed = req.body.breed;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const petName = req.body.petName;
+    const email = req.body.email;
+    const service = req.body.service;
+
+    let newAppointment = new Appointment({
+        breed,
+        firstName,
+        lastName,
+        petName,
+        email,
+        service
+    });
+
+    Appointment.create(newAppointment, (err, newAppointment) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index.html")
+            console.log("New appointment created ")
+        }
+    })
+    // res.render("appointment.html");
 });
 
 // Listen and Logging on port 3000

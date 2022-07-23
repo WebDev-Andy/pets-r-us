@@ -1,0 +1,89 @@
+<!--
+; Title: appointment.html 
+; Author: Andrew (Andy) Britt
+; Date: 21 Jun 2022
+; Description: Grooming page for Pets-R-Us
+; Reference: https://unsplash.com/photos/qy0BHykaq0E?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+; Reference: https://newbedev.com/javascript-how-to-add-header-and-footer-in-ejs-code-example
+; Reference: https://github.com/buwebdev/web-340/tree/master/week-7
+; Reference: https://www.w3schools.com/tags/tag_select.asp
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="/styles/pets.css">
+
+    <!-- Link to Google Fonts (Ubuntu font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+    <title>Welcome to Pets-R-Us</title>
+</head>
+<body>
+    <!-- ejs file for header -->
+    <%- include('./partials/header.html')%>
+
+    <div id="headerWords"><h1><i>
+        Pets-R-Us
+        <br>
+        Appointment Bookings</i></h1>
+    </div>
+
+    
+    <!--This is the main login/ register div-->
+    <div id="login">
+
+        <!-- Using POST posts to a route named login -->
+        <form action="/appointment" method="post">
+            <!-- CSRF Token -->
+            <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+
+            <h2>Fill out form to schedule</h2>
+
+            <label for="breed">Breed/ Species: </label>
+            <input name="breed" id="username" type="text" required>
+            <br>
+
+            <label for="firstName">First Name: </label>
+            <input name="firstName" id="username" type="text" required autofocus>
+            <br>
+
+            <label for="lastName">Last Name: </label>
+            <input name="lastName" id="username" type="text" required>
+            <br>
+
+            <label for="petName">Pet Name: </label>
+            <input name="petName" id="username" type="text" required>
+            <br>
+
+            <label for="email">Email: </label>
+            <input name="email" id="username" type="email" required>
+            <br>
+
+
+            <label for="service">Service: </label>
+            <select name="service" id="services">
+                <% services.forEach((service) => { %>
+                    <option value="<%= service.value %>">
+                        <%= service.text %>
+                    </option>
+
+                <% }) %>
+            </select>
+            <br>
+            <br>
+
+            <button type="submit" id="loginBtn">Submit Booking</button>
+        </form>
+        <br>
+    </div>
+    <br>
+
+</body>
+</html>
