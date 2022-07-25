@@ -20,6 +20,10 @@
   "devDependencies": {
     "nodemon": "^2.0.18"
   },
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.13.2"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",

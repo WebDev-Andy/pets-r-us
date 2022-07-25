@@ -41,8 +41,18 @@
             </div>
             <br>
             <div class="form-field">
+                <label id="labels" for="firstName">First Name</label><br />
+                <input type="text" class="input" name="firstName" id="firstName" required>
+            </div>
+            <br>
+            <div class="form-field">
+                <label id="labels" for="lastName">Last Name </label><br />
+                <input type="text" class="input" name="lastName" id="lastName" required>
+            </div>
+            <br>
+            <div class="form-field">
                 <label id="labels" for="email">Email</label><br />
-                <input type="text" class="input" name="email" id="email" required autofocus>
+                <input type="text" class="input" name="email" id="email" required>
             </div>
             <br>
             <div class="form-field">
@@ -87,5 +97,8 @@
     </div>
 </div>
 
+<div class="fixedFtr">
+    <%- include('./partials/footer.html')%>
+    </div>
 </body>
 </html>

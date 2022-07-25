@@ -113,14 +113,24 @@ html {
     left: 0;
     bottom: 0;
     width: 100%;
+    margin-left: 1rem;
     text-decoration: none;
-    color: red;
-    text-shadow: 1px 1px black; 
+    color: black;
+    text-shadow: 1px 1px rgb(206, 206, 206); 
+    letter-spacing: 1px;
+}
+
+.fixedFtr {
+    position: fixed;
+    bottom: 0;
 }
 
 #mailLink {
-    color: red;
+    color: rgb(206, 206, 206);
     font-style: italic;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-shadow: 1px 2px black; 
 }
 
 #login {
@@ -154,6 +164,16 @@ html {
     margin-right: 30%;
     width: 212px;
 }
+
+.profileTxt {
+    text-align: left; 
+   
+}
+
+#userAppointments {
+    text-align: left; 
+}
+
 
 .regBody {
     display: flex;

@@ -47,11 +47,11 @@
             <h2>Fill out form to schedule</h2>
 
             <label for="breed">Breed/ Species: </label>
-            <input name="breed" id="username" type="text" required>
+            <input name="breed" id="username" type="text" required autofocus>
             <br>
 
             <label for="firstName">First Name: </label>
-            <input name="firstName" id="username" type="text" required autofocus>
+            <input name="firstName" id="username" type="text" required>
             <br>
 
             <label for="lastName">Last Name: </label>
@@ -84,6 +84,11 @@
         <br>
     </div>
     <br>
+
+<!-- ejs file for footer -->
+<div class="fixedFtr">
+<%- include('./partials/footer.html')%>
+</div>
 
 </body>
 </html>

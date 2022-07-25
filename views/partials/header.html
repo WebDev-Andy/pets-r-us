@@ -16,13 +16,14 @@
         <a class="navBtn" href="/grooming">Grooming</a>
         <a class="navBtn" href="/boarding">Boarding</a>
         <a class="navBtn" href="/training">Training</a>
-        <% if(currentUser) { %>
-            <a class="navBtn" href="/appointment">Booking</a>
+    <% if(currentUser) { %>
+        <a class="navBtn" href="/appointment">Booking</a>
+        <a class="navBtn" href="/profile">Profile</a>
         <a class="navBtn" href="/logout">Log-out</a>
-        <% } %>
-        <% if(!currentUser) { %>
+    <% } %>
+    <% if(!currentUser) { %>
         <a class="navBtn" href="/register">Register</a>
         <a class="navBtn" href="/login">Log-in</a>
-        <% } %>
+    <% } %>
     </div>
 </header>

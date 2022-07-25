@@ -30,7 +30,6 @@ const fs = require('fs');
 // Model imports
 const User = require('./models/user.js');
 const Appointment = require('./models/appointment.js');
-const appointment = require('./models/appointment.js');
 
 // Mongo DB connectioon
 const CONN = "mongodb+srv://admin:admin@buwebdev-cluster-1.ypoz2re.mongodb.net/testDB";
@@ -94,6 +93,10 @@ app.engine('.html', require('ejs').__express);
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+// Api
+app.get('/api/')
+
+
 // Sending Index HTML 
 app.get('', (req, res)=>
 {
@@ -118,30 +121,12 @@ app.get('/boarding', (req, res)=>
     res.render('boarding.html');
 });
 
-// Sending Registration Data
-app.post('/register', (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const email = req.body.email;
-
-    User.register(new User({ username: username, email: email }), password, function (err, user) {
-        if (err) {
-            console.log(err);
-            return res.redirect('/register');
-        }
-
-    passport.authenticate("local")(req, res, function () {
-            res.redirect('/login')
-        });
-    });
-});
-
 // GETing Registration Data
 app.get('/register', (req, res)=> 
 {
-    const username = req.body.username;
-    const password = req.body.password;
-    const email = req.body.email;
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
     User.find({}, function (err, users) 
     {
         if (err)
@@ -156,21 +141,39 @@ app.get('/register', (req, res)=>
                 cardTitle: 'Registration Form',
                 moment: moment,
                 users: users,
-                csrfToken: req.csrfToken()
+                // csrfToken: req.csrfToken()
             });
         }
     });
 });
 
+// Sending Registration Data
+app.post('/register', (req, res, next) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
+
+    User.register(new User({ username: username, email: email }), password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.redirect('/register');
+        }
+
+    passport.authenticate("local")(req, res, function () {
+            res.redirect('/login')
+        });
+    });
+});
+
 // Login page
-app.get('/login', (req, res)=> 
+app.get('/login', (req, res) => 
 {
     res.render('login.html', { csrfToken: req.csrfToken() });
 });
 
 // Login and authenticate
 app.post("/login", passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/profile",
         failureRedirect: "/login",
     }), function (req, res) {
 });
@@ -194,24 +197,31 @@ function isLoggedIn(req, res, next) {
         res.redirect("/");
     }
 }
-
-app.get("/appointment", isLoggedIn, (req, res, next) => {
+// api 
+app.get("/appointment", isLoggedIn, (req, res) => {
     let servicesJsonFile = fs.readFileSync('./public/data/services.json');
     let services = JSON.parse(servicesJsonFile);
-    
-    res.render("appointment.html", {
-        cardTitle: 'Appointment Form',
-        services
+    Appointment.find({}, function (err, appointments, users) {
+        console.log("Bookings");
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("appointment.html", {
+            services: services,
+            appointments: appointments,
+          });
+        }
     });
 });
 
 app.post("/appointment", isLoggedIn, (req, res, next) => {
-    const breed = req.body.breed;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const petName = req.body.petName;
-    const email = req.body.email;
-    const service = req.body.service;
+    let breed = req.body.breed;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let petName = req.body.petName;
+    let email = req.body.email;
+    let service = req.body.service;
+    let username = req.body.username;
 
     let newAppointment = new Appointment({
         breed,
@@ -219,23 +229,69 @@ app.post("/appointment", isLoggedIn, (req, res, next) => {
         lastName,
         petName,
         email,
-        service
+        service,
+        username
     });
 
-    Appointment.create(newAppointment, (err, newAppointment) => {
+    Appointment.create(newAppointment, function (err, newAppointment) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index.html")
+            res.render("profile.html")
             console.log("New appointment created ")
         }
-    })
+    });
     // res.render("appointment.html");
+});
+
+// API routing
+app.get("/api/appointment", isLoggedIn, async (req, res) => {
+    Appointment.find({}, function (err, newAppointment) {
+      // console.log(appointment);
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(newAppointment);
+        // console.log(appointment);
+      }
+    });
+  });
+
+app.get("/profile", isLoggedIn, async (req, res) => {
+    let username = req.session.passport.user;
+    let email = req.user.email;
+    res.locals.currentUser = username;
+    Appointment.findOne({ email: email }, function (err, appointment) {
+      if (err) {
+        console.log(err);
+      } else {
+        // res.json(appointments);
+        res.render("profile.html", {
+          appointment: appointment,
+          email: email,
+          username: username,
+        });
+      }
+      console.log(email);
+      console.log(appointment);
+    });
+  });
+
+app.post("/profile", (req, res) => {
+    const userProfile = {
+        username: currentUser.username,
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+    };
+    console.log(userProfile);
+    
 });
 
 // Listen and Logging on port 3000
 app.listen(PORT, ()=>
 {
     console.log('The application is listening on ' + PORT);
+    console.log('\n  Press Ctrl+C to stop the server...');
 });
 
