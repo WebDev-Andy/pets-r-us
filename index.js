@@ -98,7 +98,7 @@ app.get('/api/')
 
 
 // Sending Index HTML 
-app.get('', (req, res)=>
+app.get('/', (req, res)=>
 {
     res.render('index.html');
 });
